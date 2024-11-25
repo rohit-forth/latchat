@@ -102,6 +102,7 @@
           border: 1px solid #E5E7EB;
           border-radius: 8px;
           font-size: 13px;
+          color:black;
           transition: all 0.2s;
       }
 
@@ -110,11 +111,14 @@
           border-color: var(--primary-color);
           box-shadow: 0 0 0 3px var(--primary-light);
       }
-
+      
+      .form-input{
+      color:black;
+      }
       .country-select-container {
           position: relative;
       }
-
+    
       .country-select {
           width: 100%;
           padding: 8px 12px;
@@ -596,22 +600,7 @@
 
         setupFormListeners() {
             const form = document.getElementById('userDetailsForm');
-            const countrySelect = document.querySelector('.country-select');
-            const countryOptions = document.querySelector('.country-options');
-        
-            if (countrySelect) {
-                countrySelect.addEventListener('click', () => {
-                    countryOptions.style.display = countryOptions.style.display === 'block' ? 'none' : 'block';
-                });
-        
-                document.querySelectorAll('.country-option').forEach(option => {
-                    option.addEventListener('click', () => {
-                        countrySelect.value = option.textContent;
-                        countryOptions.style.display = 'none';
-                    });
-                });
-            }
-        
+           
             if (form) {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
