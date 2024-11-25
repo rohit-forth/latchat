@@ -278,6 +278,9 @@
           width: fit-content;
           animation: messageSlide 0.3s ease;
       }
+
+      .feedbackmsg{
+      color:black;}
   
       .typing-indicator span {
           display: inline-block;
@@ -721,7 +724,7 @@
             promptDiv.id = promptId;
             promptDiv.className = 'conversation-end';
             promptDiv.innerHTML = `
-                <div>Would you like to continue?</div>
+                <div class="feedbackmsg">Would you like to continue?</div>
                 <div class="conversation-end-buttons">
                     <button class="conversation-end-button primary" data-action="continue">Continue Chat</button>
                     <button class="conversation-end-button" data-action="end">End Chat</button>
