@@ -215,6 +215,9 @@
           margin-top: 4px;
           opacity: 0.8;
       }
+          #userInput{
+          color:black;
+          }
   
       @keyframes messageSlide {
           from {
