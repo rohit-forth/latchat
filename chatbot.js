@@ -572,23 +572,14 @@
                             <input type="text" class="form-input" name="name" placeholder="Your name">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email *</label>
+                            <label class="form-label">Email <span style="color: red;">*</span></label>
                             <input type="email" class="form-input" name="email" placeholder="Your email" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Phone</label>
                             <input type="tel" class="form-input" name="phone" placeholder="Your phone number">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Country</label>
-                            <div class="country-select-container">
-                                <input type="text" class="country-select" name="country" placeholder="Select country" readonly>
-                                <div class="country-options">
-                                    <div class="country-option" data-value="US">United States</div>
-                                    <div class="country-option" data-value="UK">United Kingdom</div>
-                                </div>
-                            </div>
-                        </div>
+                      
                         <div class="btn-container">
                         <button type="submit" class="setup-button">Start Chat</button>
                         </div>
