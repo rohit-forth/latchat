@@ -521,8 +521,8 @@
         this.apiEndpoint = 'https://dial-ai.henceforthsolutions.com:3001/chat';
         
         // Initialize chat widget
-        const chatbot = new ChatBot();
-        chatbot.initialize(apiKey);
+        // const chatbot = new ChatBot();
+        // chatbot.initialize(apiKey);
     }
 
     class ChatBot {
