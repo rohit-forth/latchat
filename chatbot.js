@@ -18,8 +18,8 @@
           position: fixed;
           bottom: 24px;
           right: 24px;
-          width: 420px;
-          height: 680px;
+          width: 380px;
+          height: 580px;
           background: white;
           z-index: 1000;
           border-radius: var(--border-radius);
@@ -28,12 +28,18 @@
           flex-direction: column;
           overflow: hidden;
           font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-size: 13px;
       }
+
+      #userDetailsForm{
+          width: 90%;
+          text-align: start;
+    }
   
       .chat-header {
           background: var(--primary-color);
           color: white;
-          padding: 20px;
+          padding: 16px;
           font-weight: 600;
           display: flex;
           justify-content: space-between;
@@ -47,6 +53,121 @@
           gap: 10px;
       }
   
+      .chat-messages {
+          flex: 1;
+          overflow-y: auto;
+          padding: 20px;
+          background: #F9FAFB;
+          scroll-behavior: smooth;
+      }
+
+      .setup-container {
+          padding: 24px 20px;
+          background: white;
+          border-radius: var(--border-radius);
+          margin: 20px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      }
+  
+      .setup-title {
+          color: var(--text-color);
+          text-align: start;
+          margin-bottom: 20px;
+          font-size: 16px;
+         
+      }
+  
+      .setup-description {
+          color: var(--light-text);
+          margin-bottom: 20px;
+          font-size: 13px;
+          line-height: 1.5;
+      }
+
+      .form-group {
+          margin-bottom: 16px;
+      }
+
+      .form-label {
+          display: block;
+          align:start;
+          margin-bottom: 6px;
+          color: var(--text-color);
+          font-size: 13px;
+      }
+
+      .form-input {
+          width: 100%;
+          padding: 8px 12px;
+          border: 1px solid #E5E7EB;
+          border-radius: 8px;
+          font-size: 13px;
+          transition: all 0.2s;
+      }
+
+      .form-input:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px var(--primary-light);
+      }
+
+      .country-select-container {
+          position: relative;
+      }
+
+      .country-select {
+          width: 100%;
+          padding: 8px 12px;
+          border: 1px solid #E5E7EB;
+          border-radius: 8px;
+          font-size: 13px;
+          transition: all 0.2s;
+          background: white;
+          cursor: pointer;
+      }
+
+      .country-options {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: white;
+          border: 1px solid #E5E7EB;
+          border-radius: 8px;
+          max-height: 200px;
+          overflow-y: auto;
+          display: none;
+          z-index: 1000;
+      }
+
+      .country-option {
+          padding: 8px 12px;
+          cursor: pointer;
+      }
+
+      .country-option:hover {
+          background: var(--secondary-color);
+      }
+
+      .setup-button {
+          background: var(--primary-color);
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.2s;
+        
+          font-size: 13px;
+      }
+  
+      .setup-button:hover {
+          background: #1D4ED8;
+      }
+  
+      
+  
       .chat-header-title svg {
           width: 24px;
           height: 24px;
@@ -58,14 +179,7 @@
           font-weight: normal;
       }
   
-      .chat-messages {
-          flex: 1;
-          overflow-y: auto;
-          padding: 24px;
-          background: #F9FAFB;
-          scroll-behavior: smooth;
-      }
-  
+     
       .chat-messages::-webkit-scrollbar {
           width: 6px;
       }
@@ -291,11 +405,7 @@
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
       }
   
-      .setup-title {
-          color: var(--text-color);
-          margin-bottom: 8px;
-          font-size: 18px;
-      }
+     
   
       .setup-description {
           color: var(--light-text);
@@ -320,28 +430,20 @@
           box-shadow: 0 0 0 3px var(--primary-light);
       }
   
-      .setup-button {
-          background: var(--primary-color);
-          color: white;
-          border: none;
-          padding: 12px 24px;
-          border-radius: var(--border-radius);
-          cursor: pointer;
-          font-weight: 500;
-          transition: all 0.2s;
-          width: 100%;
-      }
-  
-      .setup-button:hover {
-          background: #1D4ED8;
-      }
-  
+    
       .conversation-end-buttons {
           display: flex;
           gap: 8px;
           margin-top: 8px;
       }
-  
+      
+      .btn-container{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          margin-left:30px;
+          }
       .conversation-end-button {
           padding: 6px 12px;
           border-radius: 16px;
@@ -392,18 +494,37 @@
     document.body.appendChild(chatbotContainer);
 
     // Configuration methods
-    window.WebsiteChatWidget = {
-        config: function(options) {
-            this.apiKey = options.apiKey;
-            this.apiEndpoint = options.apiEndpoint || 'https://dial-ai.henceforthsolutions.com:3001/chat';
-        },
-        
-        initialize: function() {
-            // Additional initialization logic if needed
-        }
-    };
+    // window.WebsiteChatWidget = {
+    //     config: function(options) {
+    //         if (!options.apiKey) {
+    //             console.error('API key is required');
+    //             return;
+    //         }
+    //         localStorage.setItem('chatbot_api_key', options.apiKey);
+    //         this.apiKey = options.apiKey;
+    //         this.apiEndpoint = options.apiEndpoint || 'https://dial-ai.henceforthsolutions.com:3001/chat';
+    //     }
+    // };
+    function getApiKeyFromScript() {
+        const scripts = document.getElementsByTagName('script');
+        const currentScript = scripts[scripts.length - 1];
+        const url = new URL(currentScript.src);
+        return url.searchParams.get('hfkey');
+    }
 
-    // ChatBot class definition
+    // Initialize widget with API key from URL
+    const apiKey = getApiKeyFromScript();
+    if (apiKey) {
+        // Store API key
+        localStorage.setItem('chatbot_api_key', apiKey);
+        this.apiKey = apiKey;
+        this.apiEndpoint = 'https://dial-ai.henceforthsolutions.com:3001/chat';
+        
+        // Initialize chat widget
+        const chatbot = new ChatBot();
+        chatbot.initialize(apiKey);
+    }
+
     class ChatBot {
         constructor() {
             this.apiKey = localStorage.getItem('chatbot_api_key');
@@ -411,10 +532,109 @@
             this.initialized = false;
             this.messageHistory = [];
             this.chatId = null;
-            this.inactivityTimer = null;
-            this.feedbackTimer = null;
-            this.isAwaitingFeedback = false;
-            this.isChatEnding = false;
+            this.userDetails = null;
+        }
+
+        async validateApiKey(apiKey) {
+            // For demo purposes
+            return true;
+        }
+
+        async submitUserDetails(details) {
+            // For demo purposes
+            this.userDetails = details;
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) {
+                // Clear existing messages first
+                chatMessages.innerHTML = `
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+                
+                // Add welcome message after a short delay to show animation
+                setTimeout(() => {
+                    this.addMessage('Hello! How can I help you today?', false);
+                }, 300);
+            }
+            return true;
+        }
+
+        showUserForm() {
+            const formHtml = `
+                <div class="setup-container">
+                    <h3 class="setup-title">Welcome to HF Chat Support</h3>
+                    <form id="userDetailsForm">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" name="name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" name="email" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input" name="phone" placeholder="Your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Country</label>
+                            <div class="country-select-container">
+                                <input type="text" class="country-select" name="country" placeholder="Select country" readonly>
+                                <div class="country-options">
+                                    <div class="country-option" data-value="US">United States</div>
+                                    <div class="country-option" data-value="UK">United Kingdom</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                        <button type="submit" class="setup-button">Start Chat</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) {
+                chatMessages.innerHTML = formHtml;
+                this.setupFormListeners();
+            }
+        }
+
+        setupFormListeners() {
+            const form = document.getElementById('userDetailsForm');
+            const countrySelect = document.querySelector('.country-select');
+            const countryOptions = document.querySelector('.country-options');
+        
+            if (countrySelect) {
+                countrySelect.addEventListener('click', () => {
+                    countryOptions.style.display = countryOptions.style.display === 'block' ? 'none' : 'block';
+                });
+        
+                document.querySelectorAll('.country-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        countrySelect.value = option.textContent;
+                        countryOptions.style.display = 'none';
+                    });
+                });
+            }
+        
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    const details = Object.fromEntries(formData.entries());
+                    const success = await this.submitUserDetails(details);
+                    if (success) {
+                        console.log('User details:', details);
+                        form.closest('.setup-container').remove();
+                        this.initialized = true;
+                        this.enableInput();
+                    }
+                });
+            }
         }
 
         async validateApiKey(apiKey) {
@@ -432,12 +652,13 @@
                 }
 
                 this.apiKey = apiKey;
+                if (!this.userDetails) {
+                    this.showUserForm();
+                    return true;
+                }
+
                 this.initialized = true;
                 this.enableInput();
-
-                localStorage.setItem('chatbot_api_key', apiKey);
-
-                this.chatId = null;
                 this.addMessage('Hello! How can I help you today?', false);
                 return true;
             } catch (error) {
@@ -481,10 +702,11 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
             messageDiv.textContent = message;
+            console.log(message);
             
             const typingIndicator = document.getElementById('typingIndicator');
             const chatMessages = document.getElementById('chatMessages');
-            
+            console.log(chatMessages,"chatMessages");
             if (typingIndicator && chatMessages) {
                 chatMessages.insertBefore(messageDiv, typingIndicator);
             }
@@ -562,7 +784,6 @@
             
             try {
                 if (this.chatId) {
-                    // Call PUT API to mark conversation as complete
                     await fetch(`${this.apiEndpoint}/${this.chatId}`, {
                         method: 'PUT',
                         headers: {
@@ -572,13 +793,10 @@
                     });
                 }
 
-                // Clear chat history and start new conversation
                 this.messageHistory = [];
                 this.chatId = null;
-                this.isAwaitingFeedback = false;
                 this.isChatEnding = false;
 
-                // Clear chat messages and add welcome message
                 const chatMessages = document.getElementById('chatMessages');
                 if (chatMessages) {
                     chatMessages.innerHTML = `
@@ -595,6 +813,7 @@
                 console.error('Error ending conversation:', error);
             }
         }
+    
 
         continueChatting() {
             this.isAwaitingFeedback = false;
@@ -727,8 +946,8 @@
         const isHidden = chatContainer.style.display === 'none' || chatContainer.style.display === '';
         chatContainer.style.display = isHidden ? 'flex' : 'none';
 
-        if (isHidden && !chatbot.initialized && !chatbot.apiKey) {
-            chatbot.showSetup();
+        if (isHidden) {
+            chatbot.initialize(chatbot.apiKey);
         }
     });
 
