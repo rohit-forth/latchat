@@ -470,7 +470,222 @@
       }
     `;
     document.head.appendChild(style);
+    const countryCodesStyle = `
+    .country-select-container {
+        display: flex;
+        gap: 10px;
+        
+    }
+    .country-code-select {
+        width: 60px;
+       
+         border: 1px solid #E5E7EB;
+         outline:none;
+        border-radius: 8px;
+        font-size: 13px;
+        background: white;
+    }
+    `;
+    style.textContent += countryCodesStyle;
 
+   
+    const countryCodes = [
+        { code: '+1', country: 'United States' },
+        { code: '+91', country: 'India' },
+        { code: '+44', country: 'United Kingdom' },
+        { code: '+86', country: 'China' },
+        { code: '+81', country: 'Japan' },
+        { code: '+61', country: 'Australia' },
+        { code: '+49', country: 'Germany' },
+        { code: '+33', country: 'France' },
+        { code: '+7', country: 'Russia' },
+        { code: '+65', country: 'Singapore' },
+        { code: '+93', country: 'Afghanistan' },
+        { code: '+355', country: 'Albania' },
+        { code: '+213', country: 'Algeria' },
+        { code: '+376', country: 'Andorra' },
+        { code: '+244', country: 'Angola' },
+        { code: '+54', country: 'Argentina' },
+        { code: '+374', country: 'Armenia' },
+        { code: '+297', country: 'Aruba' },
+        { code: '+43', country: 'Austria' },
+        { code: '+994', country: 'Azerbaijan' },
+        { code: '+973', country: 'Bahrain' },
+        { code: '+880', country: 'Bangladesh' },
+        { code: '+375', country: 'Belarus' },
+        { code: '+32', country: 'Belgium' },
+        { code: '+501', country: 'Belize' },
+        { code: '+229', country: 'Benin' },
+        { code: '+975', country: 'Bhutan' },
+        { code: '+591', country: 'Bolivia' },
+        { code: '+387', country: 'Bosnia and Herzegovina' },
+        { code: '+267', country: 'Botswana' },
+        { code: '+55', country: 'Brazil' },
+        { code: '+673', country: 'Brunei' },
+        { code: '+359', country: 'Bulgaria' },
+        { code: '+226', country: 'Burkina Faso' },
+        { code: '+257', country: 'Burundi' },
+        { code: '+855', country: 'Cambodia' },
+        { code: '+237', country: 'Cameroon' },
+        { code: '+1', country: 'Canada' },
+        { code: '+238', country: 'Cape Verde' },
+        { code: '+236', country: 'Central African Republic' },
+        { code: '+235', country: 'Chad' },
+        { code: '+56', country: 'Chile' },
+        { code: '+57', country: 'Colombia' },
+        { code: '+269', country: 'Comoros' },
+        { code: '+243', country: 'Congo (DRC)' },
+        { code: '+242', country: 'Congo (Republic)' },
+        { code: '+506', country: 'Costa Rica' },
+        { code: '+385', country: 'Croatia' },
+        { code: '+53', country: 'Cuba' },
+        { code: '+357', country: 'Cyprus' },
+        { code: '+420', country: 'Czech Republic' },
+        { code: '+45', country: 'Denmark' },
+        { code: '+253', country: 'Djibouti' },
+        { code: '+670', country: 'East Timor' },
+        { code: '+593', country: 'Ecuador' },
+        { code: '+20', country: 'Egypt' },
+        { code: '+503', country: 'El Salvador' },
+        { code: '+240', country: 'Equatorial Guinea' },
+        { code: '+291', country: 'Eritrea' },
+        { code: '+372', country: 'Estonia' },
+        { code: '+251', country: 'Ethiopia' },
+        { code: '+679', country: 'Fiji' },
+        { code: '+358', country: 'Finland' },
+        { code: '+33', country: 'France' },
+        { code: '+241', country: 'Gabon' },
+        { code: '+220', country: 'Gambia' },
+        { code: '+995', country: 'Georgia' },
+        { code: '+49', country: 'Germany' },
+        { code: '+233', country: 'Ghana' },
+        { code: '+30', country: 'Greece' },
+        { code: '+299', country: 'Greenland' },
+        { code: '+502', country: 'Guatemala' },
+        { code: '+224', country: 'Guinea' },
+        { code: '+245', country: 'Guinea-Bissau' },
+        { code: '+592', country: 'Guyana' },
+        { code: '+509', country: 'Haiti' },
+        { code: '+504', country: 'Honduras' },
+        { code: '+852', country: 'Hong Kong' },
+        { code: '+36', country: 'Hungary' },
+        { code: '+354', country: 'Iceland' },
+        { code: '+62', country: 'Indonesia' },
+        { code: '+98', country: 'Iran' },
+        { code: '+964', country: 'Iraq' },
+        { code: '+353', country: 'Ireland' },
+        { code: '+972', country: 'Israel' },
+        { code: '+39', country: 'Italy' },
+        { code: '+225', country: 'Ivory Coast' },
+        { code: '+1876', country: 'Jamaica' },
+        { code: '+81', country: 'Japan' },
+        { code: '+962', country: 'Jordan' },
+        { code: '+7', country: 'Kazakhstan' },
+        { code: '+254', country: 'Kenya' },
+        { code: '+686', country: 'Kiribati' },
+        { code: '+965', country: 'Kuwait' },
+        { code: '+996', country: 'Kyrgyzstan' },
+        { code: '+856', country: 'Laos' },
+        { code: '+371', country: 'Latvia' },
+        { code: '+961', country: 'Lebanon' },
+        { code: '+266', country: 'Lesotho' },
+        { code: '+231', country: 'Liberia' },
+        { code: '+218', country: 'Libya' },
+        { code: '+423', country: 'Liechtenstein' },
+        { code: '+370', country: 'Lithuania' },
+        { code: '+352', country: 'Luxembourg' },
+        { code: '+853', country: 'Macau' },
+        { code: '+389', country: 'Macedonia' },
+        { code: '+261', country: 'Madagascar' },
+        { code: '+265', country: 'Malawi' },
+        { code: '+60', country: 'Malaysia' },
+        { code: '+960', country: 'Maldives' },
+        { code: '+223', country: 'Mali' },
+        { code: '+356', country: 'Malta' },
+        { code: '+692', country: 'Marshall Islands' },
+        { code: '+222', country: 'Mauritania' },
+        { code: '+230', country: 'Mauritius' },
+        { code: '+52', country: 'Mexico' },
+        { code: '+691', country: 'Micronesia' },
+        { code: '+373', country: 'Moldova' },
+        { code: '+377', country: 'Monaco' },
+        { code: '+976', country: 'Mongolia' },
+        { code: '+382', country: 'Montenegro' },
+        { code: '+212', country: 'Morocco' },
+        { code: '+258', country: 'Mozambique' },
+        { code: '+95', country: 'Myanmar' },
+        { code: '+264', country: 'Namibia' },
+        { code: '+674', country: 'Nauru' },
+        { code: '+977', country: 'Nepal' },
+        { code: '+31', country: 'Netherlands' },
+        { code: '+64', country: 'New Zealand' },
+        { code: '+505', country: 'Nicaragua' },
+        { code: '+227', country: 'Niger' },
+        { code: '+234', country: 'Nigeria' },
+        { code: '+47', country: 'Norway' },
+        { code: '+968', country: 'Oman' },
+        { code: '+92', country: 'Pakistan' },
+        { code: '+680', country: 'Palau' },
+        { code: '+970', country: 'Palestine' },
+        { code: '+507', country: 'Panama' },
+        { code: '+675', country: 'Papua New Guinea' },
+        { code: '+595', country: 'Paraguay' },
+        { code: '+51', country: 'Peru' },
+        { code: '+63', country: 'Philippines' },
+        { code: '+48', country: 'Poland' },
+        { code: '+351', country: 'Portugal' },
+        { code: '+974', country: 'Qatar' },
+        { code: '+40', country: 'Romania' },
+        { code: '+7', country: 'Russia' },
+        { code: '+250', country: 'Rwanda' },
+        { code: '+685', country: 'Samoa' },
+        { code: '+378', country: 'San Marino' },
+        { code: '+239', country: 'Sao Tome and Principe' },
+        { code: '+966', country: 'Saudi Arabia' },
+        { code: '+221', country: 'Senegal' },
+        { code: '+381', country: 'Serbia' },
+        { code: '+248', country: 'Seychelles' },
+        { code: '+232', country: 'Sierra Leone' },
+        { code: '+65', country: 'Singapore' },
+        { code: '+421', country: 'Slovakia' },
+        { code: '+386', country: 'Slovenia' },
+        { code: '+677', country: 'Solomon Islands' },
+        { code: '+252', country: 'Somalia' },
+        { code: '+27', country: 'South Africa' },
+        { code: '+82', country: 'South Korea' },
+        { code: '+211', country: 'South Sudan' },
+        { code: '+34', country: 'Spain' },
+        { code: '+94', country: 'Sri Lanka' },
+        { code: '+249', country: 'Sudan' },
+        { code: '+597', country: 'Suriname' },
+        { code: '+268', country: 'Swaziland' },
+        { code: '+46', country: 'Sweden' },
+        { code: '+41', country: 'Switzerland' },
+        { code: '+963', country: 'Syria' },
+        { code: '+886', country: 'Taiwan' },
+        { code: '+992', country: 'Tajikistan' },
+        { code: '+255', country: 'Tanzania' },
+        { code: '+66', country: 'Thailand' },
+        { code: '+228', country: 'Togo' },
+        { code: '+676', country: 'Tonga' },
+        { code: '+216', country: 'Tunisia' },
+        { code: '+90', country: 'Turkey' },
+        { code: '+993', country: 'Turkmenistan' },
+        { code: '+688', country: 'Tuvalu' },
+        { code: '+256', country: 'Uganda' },
+        { code: '+380', country: 'Ukraine' },
+        { code: '+971', country: 'United Arab Emirates' },
+        { code: '+44', country: 'United Kingdom' },
+        { code: '+1', country: 'United States' },
+        { code: '+598', country: 'Uruguay' },
+        { code: '+998', country: 'Uzbekistan' },
+        { code: '+678', country: 'Vanuatu' },
+        { code: '+58', country: 'Venezuela' },
+        { code: '+84', country: 'Vietnam' },
+        { code: '+967', country: 'Yemen' },
+        { code: '+260', country: 'Zambia' },
+        { code: '+263', country: 'Zimbabwe' }
+    ];
     // Create HTML elements
     const chatHTML = `
      <div class="chat-trigger">
@@ -543,6 +758,7 @@
             this.messageHistory = [];
             this.chatId = null;
             this.userDetails = null;
+            this.pendingUserDetails = null;
         }
 
         async validateApiKey(apiKey) {
@@ -573,6 +789,11 @@
         }
 
         showUserForm() {
+            // Generate country code options
+            const countryCodeOptions = countryCodes.map(cc => 
+                `<option value="${cc.code}">${cc.code} (${cc.country})</option>`
+            ).join('');
+
             const formHtml = `
                 <div class="setup-container">
                     <h3 class="setup-title">Welcome to HF Chat Support</h3>
@@ -587,11 +808,16 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Phone</label>
-                            <input type="tel" class="form-input" name="phone" placeholder="Your phone number">
+                            <div class="country-select-container">
+                                <select class="country-code-select" name="country_code">
+                                    ${countryCodeOptions}
+                                </select>
+                                <input type="tel" class="form-input" name="phone" placeholder="Phone number" style="flex:1; width:133px;">
+                            </div>
                         </div>
-                      
+                       
                         <div class="btn-container">
-                        <button type="submit" class="setup-button">Start Chat</button>
+                            <button type="submit" class="setup-button">Start Chat</button>
                         </div>
                     </form>
                 </div>
@@ -612,14 +838,44 @@
                     e.preventDefault();
                     const formData = new FormData(form);
                     const details = Object.fromEntries(formData.entries());
-                    const success = await this.submitUserDetails(details);
+                    
+                    // Normalize details
+                    const normalizedDetails = {
+                        name: details.name || null,
+                        email: details.email || null,
+                        phone_no: details.phone || null,
+                        country_code: details.country_code || null
+                    };
+
+                    // Store pending details to be updated later when chat_id is available
+                    this.pendingUserDetails = normalizedDetails;
+
+                    const success = await this.submitUserDetails(normalizedDetails);
                     if (success) {
-                        console.log('User details:', details);
+                        console.log('User details:', normalizedDetails);
                         form.closest('.setup-container').remove();
                         this.initialized = true;
                         this.enableInput();
                     }
                 });
+            }
+        }
+        async updateUserDetails(chatId, details) {
+            try {
+                const response = await fetch(`https://dial-ai.henceforthsolutions.com:3001/chat/${chatId}/user-detail`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': this.apiKey
+                    },
+                    body: JSON.stringify(details)
+                });
+
+                if (!response.ok) {
+                    console.error('Failed to update user details');
+                }
+            } catch (error) {
+                console.error('Error updating user details:', error);
             }
         }
 
@@ -875,6 +1131,13 @@
                 }
 
                 const data = await response.json();
+                
+                // If we have pending user details and a new chat_id, update user details
+                if (this.pendingUserDetails && data?.data?.chat_id) {
+                    await this.updateUserDetails(data.data.chat_id, this.pendingUserDetails);
+                    this.pendingUserDetails = null;
+                }
+
                 setTimeout(() => {
                     this.hideTypingIndicator();
                     this.addMessage(data?.data?.ai_response, false, data?.data?.chat_id);
@@ -886,7 +1149,6 @@
                 console.error('Error sending message:', error);
             }
         }
-
         showSetup() {
             const existingSetup = document.querySelector('.setup-container');
             if (existingSetup) return;
