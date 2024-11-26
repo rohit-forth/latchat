@@ -529,7 +529,7 @@
         localStorage.setItem('chatbot_api_key', apiKey);
         this.apiKey = apiKey;
         this.apiEndpoint = 'https://dial-ai.henceforthsolutions.com:3001/chat';
-        
+
         // Initialize chat widget
         // const chatbot = new ChatBot();
         // chatbot.initialize(apiKey);
@@ -563,7 +563,7 @@
                         <span></span>
                     </div>
                 `;
-                
+
                 // Add welcome message after a short delay to show animation
                 setTimeout(() => {
                     this.addMessage('Hello! How can I help you today?', false);
@@ -606,7 +606,7 @@
 
         setupFormListeners() {
             const form = document.getElementById('userDetailsForm');
-           
+
             if (form) {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -689,18 +689,18 @@
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
             messageDiv.textContent = message;
             console.log(message);
-            
+
             const typingIndicator = document.getElementById('typingIndicator');
             const chatMessages = document.getElementById('chatMessages');
-            console.log(chatMessages,"chatMessages");
+            console.log(chatMessages, "chatMessages");
             if (typingIndicator && chatMessages) {
                 chatMessages.insertBefore(messageDiv, typingIndicator);
             }
-            
+
             if (chat_id) {
                 this.chatId = chat_id;
             }
-            
+
             this.messageHistory.push({ isUser, message });
             this.scrollToBottom();
 
@@ -730,16 +730,16 @@
                     <button class="conversation-end-button" data-action="end">End Chat</button>
                 </div>
             `;
-    
+
             const chatMessages = document.getElementById('chatMessages');
             chatMessages?.appendChild(promptDiv);
             this.scrollToBottom();
-    
+
             // Set timeout for auto-end after 1 minute
             this.conversationEndTimeout = setTimeout(() => {
                 this.endConversation();
             }, 60000);
-    
+
             // Add event listeners
             promptDiv.querySelectorAll('button').forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -750,10 +750,10 @@
                         // continuationMessage.className = 'message bot-message';
                         // continuationMessage.style.textAlign = 'center';
                         // continuationMessage.innerHTML = 'Great! How else can I help you today?';
-                        
+
                         // Replace the prompt with the continuation message
                         promptDiv.replaceWith(continuationMessage);
-                        
+
                         clearTimeout(this.conversationEndTimeout);
                         this.lastActivityTime = Date.now();
                     } else {
@@ -762,12 +762,12 @@
                 });
             });
         }
-    
+
 
         async endConversation() {
             if (this.isChatEnding) return;
             this.isChatEnding = true;
-            
+
             try {
                 if (this.chatId) {
                     await fetch(`${this.apiEndpoint}/${this.chatId}`, {
@@ -781,25 +781,21 @@
 
                 this.messageHistory = [];
                 this.chatId = null;
+                this.initialized = false; // Reset initialization status
                 this.isChatEnding = false;
 
                 const chatMessages = document.getElementById('chatMessages');
                 if (chatMessages) {
-                    chatMessages.innerHTML = `
-                        <div class="typing-indicator" id="typingIndicator">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    `;
+                    // Show user form again
+                    this.showUserForm();
                 }
-                this.addMessage('Hello! How can I help you today?', false);
 
             } catch (error) {
                 console.error('Error ending conversation:', error);
             }
+
         }
-    
+
 
         continueChatting() {
             this.isAwaitingFeedback = false;
@@ -925,7 +921,7 @@
     }
 
     // Event Listeners
-    document.querySelector('.chat-trigger')?.addEventListener('click', function() {
+    document.querySelector('.chat-trigger')?.addEventListener('click', function () {
         const chatContainer = document.getElementById('chatContainer');
         if (!chatContainer) return;
 
@@ -937,14 +933,14 @@
         }
     });
 
-    document.querySelector('.close-btn')?.addEventListener('click', function() {
+    document.querySelector('.close-btn')?.addEventListener('click', function () {
         const chatContainer = document.getElementById('chatContainer');
         if (chatContainer) {
             chatContainer.style.display = 'none';
         }
     });
 
-    document.getElementById('userInput')?.addEventListener('keypress', function(event) {
+    document.getElementById('userInput')?.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             sendMessage();
         }
@@ -974,7 +970,7 @@
     async function sendMessage() {
         const userInput = document.getElementById('userInput');
         if (!userInput) return;
-        
+
         const message = userInput.value.trim();
         if (!message) return;
 
@@ -983,7 +979,7 @@
     }
 
     // Setup button event listener
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (event.target && event.target.id === 'setupButton') {
             setupChatbot();
         }
