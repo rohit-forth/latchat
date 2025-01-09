@@ -696,7 +696,7 @@
   
       <div class="chat-container" id="chatContainer">
           <div class="chat-header">
-            <span>HF Chat Support</span>
+            <span>Chat Support</span>
             <button class="close-btn">×</button>
         </div>
         <div class="chat-messages" id="chatMessages">
@@ -708,7 +708,12 @@
         </div>
         <div class="chat-input">
             <input type="text" id="userInput" placeholder="Type a message..." disabled>
-            <button id="sendButton" disabled>Send</button>
+           
+        <button id="sendButton" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </button>
         </div>
       </div>
     `;
@@ -734,26 +739,30 @@
         const scripts = document.getElementsByTagName('script');
         const currentScript = scripts[scripts.length - 1];
         const url = new URL(currentScript.src);
-        return url.searchParams.get('hfkey');
+        console.log(url,"wfvjhuwervhgfvbjehurgbjhie");
+        return {
+            ai_agent: url.searchParams.get('agent_id'),
+            secret_key: url.searchParams.get('secret_key')
+        };
     }
 
     // Initialize widget with API key from URL
-    const apiKey = getApiKeyFromScript();
-    if (apiKey) {
+    const { ai_agent, secret_key } = getApiKeyFromScript();
+   
+    if (ai_agent && secret_key) {
         // Store API key
-        localStorage.setItem('chatbot_api_key', apiKey);
-        this.apiKey = apiKey;
-        this.apiEndpoint = 'https://dial-ai.henceforthsolutions.com:3001/chat';
-
-        // Initialize chat widget
-        // const chatbot = new ChatBot();
-        // chatbot.initialize(apiKey);
+        localStorage.setItem('secret_key', secret_key);
+        localStorage.setItem('ai_agent', ai_agent);
+        this.secret_key = secret_key;
+        this.agent_id = ai_agent;
+      
     }
 
     class ChatBot {
         constructor() {
-            this.apiKey = localStorage.getItem('chatbot_api_key');
-            this.apiEndpoint = 'https://dial-ai.henceforthsolutions.com:3001/chat';
+            this.secret_key = localStorage.getItem('secret_key');
+            this.agent_id = localStorage.getItem('ai_agent');
+            this.apiEndpoint = 'https://dev.qixs.ai:3003/';
             this.initialized = false;
             this.messageHistory = [];
             this.chatId = null;
@@ -765,7 +774,7 @@
             // For demo purposes
             return true;
         }
-
+       
         async submitUserDetails(details) {
             // For demo purposes
             this.userDetails = details;
@@ -781,9 +790,25 @@
                 `;
 
                 // Add welcome message after a short delay to show animation
-                setTimeout(() => {
-                    this.addMessage('Hello! How can I help you today?', false);
-                }, 300);
+                
+                const response = await fetch(`${this.apiEndpoint}agent/${this.agent_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        
+                    }
+                });
+
+                if (response.ok) {
+                    const apiRes = await response.json();
+                    const firstMessage = apiRes.data.first_message;
+                    this.addMessage(firstMessage, false);
+                } else {
+                    console.error('Failed to fetch first message');
+                }
+                // setTimeout(() => {
+                //     this.addMessage('Hello! How can I help you today?', false);
+                // }, 300);
             }
             return true;
         }
@@ -796,7 +821,7 @@
 
             const formHtml = `
                 <div class="setup-container">
-                    <h3 class="setup-title">Welcome to HF Chat Support</h3>
+                
                     <form id="userDetailsForm">
                         <div class="form-group">
                             <label class="form-label">Name</label>
@@ -862,11 +887,11 @@
         }
         async updateUserDetails(chatId, details) {
             try {
-                const response = await fetch(`https://dial-ai.henceforthsolutions.com:3001/chat/${chatId}/user-detail`, {
+                const response = await fetch(`${this.apiEndpoint}chat/${chatId}/user-detail`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
-                        'x-api-key': this.apiKey
+                        'x-api-key': this.secret_key
                     },
                     body: JSON.stringify(details)
                 });
@@ -885,15 +910,15 @@
             return true;
         }
 
-        async initialize(apiKey) {
+        async initialize(secret_key) {
             try {
-                const isValid = await this.validateApiKey(apiKey);
+                const isValid = await this.validateApiKey(secret_key);
                 if (!isValid) {
                     this.showError('Invalid API key. Please check and try again.');
                     return false;
                 }
 
-                this.apiKey = apiKey;
+                this.secret_key = secret_key;
                 if (!this.userDetails) {
                     this.showUserForm();
                     return true;
@@ -901,7 +926,21 @@
 
                 this.initialized = true;
                 this.enableInput();
-                this.addMessage('Hello! How can I help you today?', false);
+                // this.addMessage('Hello! How can I help you today?', false);
+                const response = await fetch(`${this.apiEndpoint}agent/${this.agent_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const apiRes = await response.json();
+                    const firstMessage = apiRes.data.first_message;
+                    this.addMessage(firstMessage, false);
+                } else {
+                    console.error('Failed to fetch first message');
+                }
                 return true;
             } catch (error) {
                 this.showError('Failed to initialize chatbot. Please check your API key.');
@@ -1030,7 +1069,7 @@
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
-                            'x-api-key': this.apiKey
+                            'x-api-key': this.secret_key
                         }
                     });
                 }
@@ -1102,7 +1141,7 @@
         }
 
         async sendMessage(message) {
-            if (!this.initialized || !this.apiKey) {
+            if (!this.initialized || !this.secret_key || !this.agent_id) {
                 this.showError('Please configure the chatbot first.');
                 return;
             }
@@ -1113,15 +1152,17 @@
             try {
                 const requestBody = {
                     text: message,
-                    ...(this.chatId && { chat_id: this.chatId })
+                    secret_key: this.secret_key,
+                    agent_id: this.agent_id,
+                    ...(this.chatId && { chat_id: this.chatId }),
                 };
 
-                const response = await fetch(this.apiEndpoint, {
+                const response = await fetch(`${this.apiEndpoint}chat`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'anthropic-version': '2023-06-01',
-                        'x-api-key': this.apiKey
+                        
                     },
                     body: JSON.stringify(requestBody)
                 });
@@ -1160,9 +1201,9 @@
                     <input 
                         type="password" 
                         class="setup-input" 
-                        id="apiKey" 
+                        id="secret_key" 
                         placeholder="Enter your API Key" 
-                        value="${this.apiKey || ''}"
+                        value="${this.secret_key || ''}"
                     />
                     <button class="setup-button" id="setupButton">Start Chat</button>
                 </div>
@@ -1178,10 +1219,12 @@
     const chatbot = new ChatBot();
 
     // If API key exists in localStorage, initialize immediately
-    if (chatbot.apiKey) {
-        chatbot.initialize(chatbot.apiKey);
-    }
-
+if (chatbot.secret_key) {
+    chatbot.initialize(chatbot.secret_key);
+} else {
+    chatbot.showSetup();
+}
+  
     // Event Listeners
     document.querySelector('.chat-trigger')?.addEventListener('click', function () {
         const chatContainer = document.getElementById('chatContainer');
@@ -1189,9 +1232,10 @@
 
         const isHidden = chatContainer.style.display === 'none' || chatContainer.style.display === '';
         chatContainer.style.display = isHidden ? 'flex' : 'none';
-
+        const secretKey = localStorage.getItem('secret_key');
+        const agentId = localStorage.getItem('ai_agent');
         if (isHidden) {
-            chatbot.initialize(chatbot.apiKey);
+            chatbot.initialize(secretKey);
         }
     });
 
@@ -1212,7 +1256,7 @@
 
     // Helper functions
     async function setupChatbot() {
-        const apiKeyInput = document.getElementById('apiKey');
+        const apiKeyInput = document.getElementById('secret_key');
         const apiKey = apiKeyInput?.value.trim();
 
         if (!apiKey) {
