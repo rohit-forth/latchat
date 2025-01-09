@@ -736,7 +736,7 @@
     //     }
     // };
     function getApiKeyFromScript() {
-        const scripts = document.getElementsByTagName('script');
+        const scripts = document.querySelectorAll('script[src*="chatbot.js"]');
         const currentScript = scripts[scripts.length - 1];
         const url = new URL(currentScript.src);
         console.log(url,"wfvjhuwervhgfvbjehurgbjhie");
