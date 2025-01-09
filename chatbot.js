@@ -736,12 +736,15 @@
     //     }
     // };
     function getApiKeyFromScript() {
-        const scripts = document.querySelectorAll('script[src*="chatbot.js"]');
+        const scripts = Array.from(document.querySelectorAll('script[src*="chatbot.js"]'));
         const currentScript = scripts[scripts.length - 1];
         const url = new URL(currentScript.src);
         console.log(url,"wfvjhuwervhgfvbjehurgbjhie");
+        console.log(url.searchParams.get('ai_agent'),"wfvjhuwervhgfvbjehurgbjhie");
+        console.log(url.searchParams.get('secret_key'),"wfvjhuwervhgfvbjehurgbjhie");
+    
         return {
-            ai_agent: url.searchParams.get('agent_id'),
+            ai_agent: url.searchParams.get('ai_agent'),
             secret_key: url.searchParams.get('secret_key')
         };
     }
