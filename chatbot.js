@@ -56,16 +56,18 @@
       .chat-messages {
           flex: 1;
           overflow-y: auto;
-          padding: 20px;
+          padding: 15px;
           background: #F9FAFB;
           scroll-behavior: smooth;
       }
+      .chat-messages::-webkit-scrollbar-thumb {
+           display:none !important
+        }
 
       .setup-container {
           padding: 24px 20px;
           background: white;
           border-radius: var(--border-radius);
-          margin: 20px;
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
       }
   
@@ -477,8 +479,9 @@
         
     }
     .country-code-select {
-        width: 60px;
-       
+        width: 65px;
+        margin-top:0px;
+        margin-bottom:0px;
          border: 1px solid #E5E7EB;
          outline:none;
         border-radius: 8px;
