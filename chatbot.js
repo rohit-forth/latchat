@@ -3,7 +3,7 @@
     const style = document.createElement('style');
     style.textContent = `
       :root {
-          --primary-color: #2563EB;
+          --primary-color: #181c67;
           --primary-light: #DBEAFE;
           --secondary-color: #F3F4F6;
           --error-color: #EF4444;
@@ -18,8 +18,8 @@
           position: fixed;
           bottom: 24px;
           right: 24px;
-          width: 380px;
-          height: 580px;
+          width: 400px;
+          height: 590px;
           background: white;
           z-index: 1000;
           border-radius: var(--border-radius);
@@ -32,16 +32,22 @@
       }
 
       #userDetailsForm{
-          width: 90%;
+        padding:0;
           text-align: start;
+          width:100%
     }
   
       .chat-header {
           background: var(--primary-color);
           color: white;
-          padding: 16px;
+          padding: 13px 0px;
+         
+        height: 35px;
+          padding-left:10px;
+          padding-top:17px;
           font-weight: 600;
           display: flex;
+          font-size: 16px;
           justify-content: space-between;
           align-items: center;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -57,7 +63,8 @@
           flex: 1;
           overflow-y: auto;
           padding: 15px;
-          background: #F9FAFB;
+        
+          
           scroll-behavior: smooth;
       }
       .chat-messages::-webkit-scrollbar-thumb {
@@ -65,10 +72,25 @@
         }
 
       .setup-container {
-          padding: 24px 20px;
           background: white;
           border-radius: var(--border-radius);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+          padding:20px;
+          padding-top:30px;
+          padding-bottom:30px;
+          display: flex;
+          margin-top:40px;
+          margin-left:7px;
+            margin-right:7px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+         
+         
+          text-align: center;
+         
+         
+         
+          box-shadow: 0 0px 51px rgba(0, 0, 0, 0.09);
       }
   
       .setup-title {
@@ -95,12 +117,12 @@
           align:start;
           margin-bottom: 6px;
           color: var(--text-color);
-          font-size: 13px;
+          font-size: 15px;
       }
 
       .form-input {
-          width: 100%;
-          padding: 8px 12px;
+          width:-webkit-fill-available;
+          padding: 13px 11px;
           border: 1px solid #E5E7EB;
           border-radius: 8px;
           font-size: 13px;
@@ -119,18 +141,28 @@
       }
       .country-select-container {
           position: relative;
+          border: 1px solid #E5E7EB;
+          border-radius: 8px;
       }
     
       .country-select {
           width: 100%;
+          
           padding: 8px 12px;
-          border: 1px solid #E5E7EB;
-          border-radius: 8px;
           font-size: 13px;
           transition: all 0.2s;
           background: white;
           cursor: pointer;
       }
+
+      select{
+      border:none !important;
+      }
+        .country-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
 
       .country-options {
           position: absolute;
@@ -159,20 +191,19 @@
           background: var(--primary-color);
           color: white;
           border: none;
-          padding: 10px 20px;
-          border-radius: 8px;
+          font-size: 18px;
+          padding: 14px 20px;
+          border-radius: 13px;
           cursor: pointer;
           font-weight: 500;
+          width: 100%;
           transition: all 0.2s;
         
-          font-size: 13px;
+          font-size: 14px;
+          font-weight: 600;
       }
   
-      .setup-button:hover {
-          background: #1D4ED8;
-      }
-  
-      
+   
   
       .chat-header-title svg {
           width: 24px;
@@ -219,6 +250,8 @@
       }
           #userInput{
           color:black;
+           box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
+           padding: 17px 16px;
           }
   
       @keyframes messageSlide {
@@ -233,10 +266,10 @@
       }
   
       .user-message {
-          background: var(--primary-color);
-          color: white;
+          background: var(--secondary-color);
+          color:black;
           margin-left: auto;
-          border-radius: var(--message-radius) var(--message-radius) 0 var(--message-radius);
+          border-radius: var(--message-radius) 0 var(--message-radius) var(--message-radius);
       }
   
       .user-message .message-timestamp {
@@ -245,10 +278,10 @@
       }
   
       .bot-message {
-          background: white;
-          color: var(--text-color);
+          background: var(--primary-color);
+          color: white;
           margin-right: auto;
-          border-radius: var(--message-radius) var(--message-radius) var(--message-radius) 0;
+          border-radius: 0 var(--message-radius) var(--message-radius) var(--message-radius) ;
           border: 1px solid #E5E7EB;
       }
   
@@ -272,10 +305,9 @@
   
       .typing-indicator {
           display: none;
-          background: white;
-          border: 1px solid #E5E7EB;
-          border-radius: var(--message-radius) var(--message-radius) var(--message-radius) 0;
-          padding: 16px;
+          background: var(--primary-color);
+          border-radius:0 var(--message-radius) var(--message-radius) var(--message-radius) ;
+          padding: 12px;
           margin-bottom: 16px;
           width: fit-content;
           animation: messageSlide 0.3s ease;
@@ -286,9 +318,9 @@
   
       .typing-indicator span {
           display: inline-block;
-          width: 8px;
-          height: 8px;
-          background: var(--primary-color);
+          width: 6px;
+          height: 6px;
+          background:white;
           border-radius: 50%;
           margin-right: 5px;
           opacity: 0.6;
@@ -305,9 +337,9 @@
   
       .chat-input {
           display: flex;
-          padding: 20px;
+          align-items: center;
+          padding: 22px;
           background: white;
-          border-top: 1px solid #E5E7EB;
           gap: 12px;
       }
   
@@ -320,10 +352,10 @@
           width: 100%;
           padding: 12px 44px 12px 16px;
           border: 1px solid #E5E7EB;
-          border-radius: 24px;
+          border-radius: 15px;
           font-size: 14px;
           transition: all 0.2s;
-          background: var(--secondary-color);
+          
       }
   
       .chat-input input:focus {
@@ -352,7 +384,7 @@
       }
   
       .chat-input button:hover {
-          background: #1D4ED8 !important;
+          
           transform: scale(1.05);
       }
   
@@ -366,7 +398,7 @@
           right: 24px !important;
           width: 64px !important;
           height: 64px !important;
-          background: #2563EB !important;
+          background:var(--primary-color) !important;
           border-radius: 50% !important;
           display: flex !important;
           align-items: center !important;
@@ -398,9 +430,10 @@
           color: white;
           cursor: pointer;
           padding: 8px;
+          margin-right:8px;
           opacity: 0.8;
           transition: all 0.2s;
-          border-radius: 8px;
+          border-radius: 50%;
       }
   
       .close-btn:hover {
@@ -408,14 +441,7 @@
           background: rgba(255, 255, 255, 0.1);
       }
   
-      .setup-container {
-          padding: 32px 24px;
-          text-align: center;
-          background: white;
-          border-radius: var(--border-radius);
-          margin: 30px;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      }
+   
   
      
   
@@ -454,7 +480,7 @@
           justify-content: center;
           align-items: center;
           text-align: center;
-          margin-left:30px;
+          
           }
       .conversation-end-button {
           padding: 6px 12px;
@@ -470,16 +496,36 @@
       .feedback-button:hover {
           background: var(--primary-light);
       }
+    .chatbot-header{
+    display:flex;
+    align-items:center;
+    }
     `;
     document.head.appendChild(style);
     const countryCodesStyle = `
     .country-select-container {
         display: flex;
         gap: 10px;
+        align-items: center;
         
+        }
+        .country-select-container:focus {
+            outline:none !important;
+            border-color:var(--primary-color);
+            box-shadow:0 0 0 3px var(--primary-light);
+        
+        }
+            
+
+    .phonee{
+    border:none !important;
+    focus:none !important;
+    outline:none !important;
+    box-shadow:none !important;
+
     }
     .country-code-select {
-        width: 65px;
+        width: 60px;
         margin-top:0px;
         margin-bottom:0px;
          border: 1px solid #E5E7EB;
@@ -491,7 +537,7 @@
     `;
     style.textContent += countryCodesStyle;
 
-   
+
     const countryCodes = [
         { code: '+1', country: 'United States' },
         { code: '+91', country: 'India' },
@@ -692,15 +738,15 @@
     // Create HTML elements
     const chatHTML = `
      <div class="chat-trigger">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="var(--primary-color)" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
       </div>
   
       <div class="chat-container" id="chatContainer">
           <div class="chat-header">
-            <span>Chat Support</span>
-            <button class="close-btn">×</button>
+            <div class="chatbot-header">QIXS AI</div>
+            <button class="close-btn">X</button>
         </div>
         <div class="chat-messages" id="chatMessages">
             <div class="typing-indicator" id="typingIndicator">
@@ -710,10 +756,10 @@
             </div>
         </div>
         <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type a message..." disabled>
+            <input type="text" id="userInput" placeholder="Send a message..." disabled>
            
         <button id="sendButton" disabled>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="var(--primary-color)" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
         </button>
@@ -726,26 +772,13 @@
     chatbotContainer.innerHTML = chatHTML;
     document.body.appendChild(chatbotContainer);
 
-    // Configuration methods
-    // window.WebsiteChatWidget = {
-    //     config: function(options) {
-    //         if (!options.apiKey) {
-    //             console.error('API key is required');
-    //             return;
-    //         }
-    //         localStorage.setItem('chatbot_api_key', options.apiKey);
-    //         this.apiKey = options.apiKey;
-    //         this.apiEndpoint = options.apiEndpoint || 'https://dial-ai.henceforthsolutions.com:3001/chat';
-    //     }
-    // };
+
     function getApiKeyFromScript() {
         const scripts = Array.from(document.querySelectorAll('script[src*="chatbot.js"]'));
         const currentScript = scripts[scripts.length - 1];
         const url = new URL(currentScript.src);
-        console.log(url,"wfvjhuwervhgfvbjehurgbjhie");
-        console.log(url.searchParams.get('ai_agent'),"wfvjhuwervhgfvbjehurgbjhie");
-        console.log(url.searchParams.get('secret_key'),"wfvjhuwervhgfvbjehurgbjhie");
-    
+
+
         return {
             ai_agent: url.searchParams.get('ai_agent'),
             secret_key: url.searchParams.get('secret_key')
@@ -754,14 +787,14 @@
 
     // Initialize widget with API key from URL
     const { ai_agent, secret_key } = getApiKeyFromScript();
-   
+
     if (ai_agent && secret_key) {
         // Store API key
         localStorage.setItem('secret_key', secret_key);
         localStorage.setItem('ai_agent', ai_agent);
         this.secret_key = secret_key;
         this.agent_id = ai_agent;
-      
+
     }
 
     class ChatBot {
@@ -774,13 +807,15 @@
             this.chatId = null;
             this.userDetails = null;
             this.pendingUserDetails = null;
+            this.agent_photo = null;
+            this.agent_name = null;
         }
 
         async validateApiKey(apiKey) {
             // For demo purposes
             return true;
         }
-       
+
         async submitUserDetails(details) {
             // For demo purposes
             this.userDetails = details;
@@ -796,18 +831,25 @@
                 `;
 
                 // Add welcome message after a short delay to show animation
-                
+
                 const response = await fetch(`${this.apiEndpoint}agent/${this.agent_id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
-                        
+
                     }
                 });
 
                 if (response.ok) {
                     const apiRes = await response.json();
-                    const firstMessage = apiRes.data.first_message;
+                    const firstMessage = apiRes.data.chat_first_message;
+                    this.agent_name = apiRes.data.name;
+                    this.agent_photo = apiRes.data.image;
+                    const chatbotHeader = document.querySelector('.chatbot-header');
+                    chatbotHeader.innerHTML = `
+                        <img src="https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}" alt="Agent" style="width: 35px; height: 35px; border-radius: 50%; margin-right: 8px; object-fit:cover; ">
+                        <span>${apiRes?.data?.name}</span>
+                    `;
                     this.addMessage(firstMessage, false);
                 } else {
                     console.error('Failed to fetch first message');
@@ -821,7 +863,7 @@
 
         showUserForm() {
             // Generate country code options
-            const countryCodeOptions = countryCodes.map(cc => 
+            const countryCodeOptions = countryCodes.map(cc =>
                 `<option value="${cc.code}">${cc.code} (${cc.country})</option>`
             ).join('');
 
@@ -830,20 +872,20 @@
                 
                     <form id="userDetailsForm">
                         <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-input" name="name" placeholder="Your name">
+                            <label class="form-label">Your name <span style="color: red;">*</span></label>
+                            <input type="text" class="form-input" name="name" placeholder="Enter your name">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email <span style="color: red;">*</span></label>
-                            <input type="email" class="form-input" name="email" placeholder="Your email" required>
+                            <label class="form-label">Email address <span style="color: red;">*</span></label>
+                            <input type="email" class="form-input" name="email" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Phone</label>
+                            <label class="form-label">Phone number</label>
                             <div class="country-select-container">
                                 <select class="country-code-select" name="country_code">
                                     ${countryCodeOptions}
                                 </select>
-                                <input type="tel" class="form-input" name="phone" placeholder="Phone number" style="flex:1; width:133px;">
+                                <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex:1; width:133px;">
                             </div>
                         </div>
                        
@@ -869,7 +911,7 @@
                     e.preventDefault();
                     const formData = new FormData(form);
                     const details = Object.fromEntries(formData.entries());
-                    
+
                     // Normalize details
                     const normalizedDetails = {
                         name: details.name || null,
@@ -942,14 +984,16 @@
 
                 if (response.ok) {
                     const apiRes = await response.json();
-                    const firstMessage = apiRes.data.first_message;
+                    const firstMessage = apiRes.data.chat_first_message;
+                    this.agent_photo = apiRes.data.image;
                     this.addMessage(firstMessage, false);
                 } else {
                     console.error('Failed to fetch first message');
+
                 }
                 return true;
             } catch (error) {
-                this.showError('Failed to initialize chatbot. Please check your API key.');
+                this.addMessage(error?.request?.body?.message, false)
                 return false;
             }
         }
@@ -984,18 +1028,53 @@
             document.getElementById('chatMessages')?.appendChild(errorDiv);
             setTimeout(() => errorDiv.remove(), 5000);
         }
-
         addMessage(message, isUser, chat_id = null) {
+            const messageContainer = document.createElement('div');
+            messageContainer.style.display = 'flex';
+            messageContainer.style.alignItems = 'flex-start';
+            messageContainer.style.marginBottom = '16px';
+
+            if (!isUser) {
+                const botImage = document.createElement('img');
+                botImage.src = `https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}`; // Replace with the actual path to the bot image
+                botImage.alt = 'Bot';
+                botImage.style.width = '26px';
+                botImage.style.objectFit = 'cover';
+                botImage.style.height = '26px';
+                botImage.style.borderRadius = '50%';
+                botImage.style.marginRight = '8px';
+                messageContainer.appendChild(botImage);
+            }
+
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            messageDiv.textContent = message;
+
+            const messageText = document.createElement('div');
+            messageText.textContent = message;
+            messageDiv.appendChild(messageText);
+
+            messageContainer.appendChild(messageDiv);
+
+            if (isUser) {
+                const userImage = document.createElement('img');
+                userImage.src = 'https://img.freepik.com/premium-vector/vector-flat-illustration-round-gray-man-icon-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9_719432-1794.jpg?w=740'; // Placeholder image for user
+                userImage.alt = 'User';
+                userImage.style.width = '35px';
+                userImage.style.objectFit = 'cover';
+                userImage.style.height = '35px';
+                userImage.style.borderRadius = '50%';
+                userImage.style.marginLeft = '8px';
+                userImage.style.marginTop = '-5px';
+                messageContainer.appendChild(userImage);
+            }
+
             console.log(message);
 
             const typingIndicator = document.getElementById('typingIndicator');
             const chatMessages = document.getElementById('chatMessages');
             console.log(chatMessages, "chatMessages");
             if (typingIndicator && chatMessages) {
-                chatMessages.insertBefore(messageDiv, typingIndicator);
+                chatMessages.insertBefore(messageContainer, typingIndicator);
             }
 
             if (chat_id) {
@@ -1121,7 +1200,7 @@
                 if (!this.isAwaitingFeedback) {
                     this.showConversationEndPrompt();
                 }
-            }, 40000); // 40 seconds
+            }, 120000);
         }
 
         scrollToBottom() {
@@ -1168,17 +1247,17 @@
                     headers: {
                         'Content-Type': 'application/json',
                         'anthropic-version': '2023-06-01',
-                        
+
                     },
                     body: JSON.stringify(requestBody)
                 });
 
                 if (!response.ok) {
-                    throw new Error('API request failed');
+                    throw new Error("You don't have any subscription plan! Please purchase any subscription.");
                 }
 
                 const data = await response.json();
-                
+
                 // If we have pending user details and a new chat_id, update user details
                 if (this.pendingUserDetails && data?.data?.chat_id) {
                     await this.updateUserDetails(data.data.chat_id, this.pendingUserDetails);
@@ -1192,7 +1271,7 @@
 
             } catch (error) {
                 this.hideTypingIndicator();
-                this.showError('Sorry, I encountered an error. Please try again later.');
+                this.showError(error?.message);
                 console.error('Error sending message:', error);
             }
         }
@@ -1225,12 +1304,12 @@
     const chatbot = new ChatBot();
 
     // If API key exists in localStorage, initialize immediately
-if (chatbot.secret_key) {
-    chatbot.initialize(chatbot.secret_key);
-} else {
-    chatbot.showSetup();
-}
-  
+    if (chatbot.secret_key) {
+        chatbot.initialize(chatbot.secret_key);
+    } else {
+        chatbot.showSetup();
+    }
+
     // Event Listeners
     document.querySelector('.chat-trigger')?.addEventListener('click', function () {
         const chatContainer = document.getElementById('chatContainer');
