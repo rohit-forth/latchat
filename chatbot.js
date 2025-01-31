@@ -227,7 +227,7 @@
           border-radius: 3px;
       }
   
-      .message {
+      .qixs-bot-message {
           margin-bottom: 1px;
           max-width: 68%;
           padding: 13px 18px;
@@ -1074,7 +1074,7 @@
       }
 
       const messageDiv = document.createElement("div");
-      messageDiv.className = `message ${
+      messageDiv.className = `qixs-bot-message ${
         isUser ? "user-message" : "bot-message"
       }`;
 
