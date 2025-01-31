@@ -533,6 +533,7 @@
         width: 60px;
         margin-left:5px;
         margin-bottom:0px;
+        margin-top:0px !important;
          border: 1px solid #E5E7EB;
          outline:none;
         border-radius: 8px;
@@ -892,7 +893,7 @@
                         <div class="form-group">
                             <label class="form-label">Phone number</label>
                             <div class="country-select-container">
-                                <select class="country-code-select" name="country_code">
+                                <select class="country-code-select select-chat" name="country_code">
                                     ${countryCodeOptions}
                                 </select>
                                 <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex:1; width:133px;">
