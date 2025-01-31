@@ -42,7 +42,7 @@
           color: white;
           padding: 13px 0px;
          
-        height: 35px;
+        height: 60px !important;
           padding-left:10px;
           padding-top:17px;
           font-weight: 600;
@@ -79,7 +79,7 @@
           padding-top:30px;
           padding-bottom:30px;
           display: flex;
-          margin-top:40px;
+          margin-top:10px;
           margin-left:7px;
             margin-right:7px;
             flex-direction: column;
@@ -156,9 +156,10 @@
           cursor: pointer;
       }
 
-      select{
+      select-chat{
       border:none !important;
       border-radius:50px !important;
+      margin-top:0px !important
       }
 
 
