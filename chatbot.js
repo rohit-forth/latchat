@@ -854,13 +854,19 @@
           this.agent_name = apiRes.data.name;
           this.agent_photo = apiRes.data.image;
           const chatbotHeader = document.querySelector(".chatbot-header");
+          const agentPhotoSrc = this.agent_photo
+            ? "https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/" +
+              this.agent_photo
+            : "https://img.freepik.com/premium-vector/vector-flat-illustration-round-gray-man-icon-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9_719432-1794.jpg?w=740";
           chatbotHeader.innerHTML = `
-                        <img src="https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}" alt="Agent" style="width: 35px; height: 35px; border-radius: 50%; margin-right: 8px; object-fit:cover; ">
+                        <img src=${agentPhotoSrc} alt="Agent" style="width: 35px; height: 35px; border-radius: 50%; margin-right: 8px; object-fit:cover; ">
                         <span>${apiRes?.data?.name}</span>
                     `;
           this.addMessage(firstMessage, false);
         } else {
           console.error("Failed to fetch first message");
+          const errorMessage = await response.json();
+          throw new Error(errorMessage.message);
         }
         // setTimeout(() => {
         //     this.addMessage('Hello! How can I help you today?', false);
@@ -1052,7 +1058,12 @@
 
       if (!isUser) {
         const botImage = document.createElement("img");
-        botImage.src = `https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}`;
+        if (this.agent_photo) {
+          botImage.src = `https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}`;
+        } else {
+          botImage.src =
+            "https://img.freepik.com/premium-vector/vector-flat-illustration-round-gray-man-icon-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9_719432-1794.jpg?w=740";
+        }
         botImage.alt = "Bot";
         botImage.style.width = "26px";
         botImage.style.objectFit = "cover";
