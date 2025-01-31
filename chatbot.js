@@ -534,7 +534,7 @@
         margin-left:5px;
         margin-bottom:0px;
         margin-top:0px !important;
-         border: 1px solid #E5E7EB;
+         border: none !important;
          outline:none;
         border-radius: 8px;
         font-size: 13px;
