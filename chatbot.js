@@ -66,6 +66,7 @@
         
           
           scroll-behavior: smooth;
+          scrollbar-width:none !important;
       }
       .chat-messages::-webkit-scrollbar-thumb {
            display:none !important
