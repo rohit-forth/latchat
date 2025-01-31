@@ -807,7 +807,7 @@
     constructor() {
       this.secret_key = localStorage.getItem("secret_key");
       this.agent_id = localStorage.getItem("ai_agent");
-      this.apiEndpoint = "https://qixs.ai:3001/";
+      this.apiEndpoint = "https://dev.qixs.ai:3003/";
       this.initialized = false;
       this.messageHistory = [];
       this.chatId = null;
