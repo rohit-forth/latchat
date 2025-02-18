@@ -1545,7 +1545,7 @@
                   <div class="country-select-container" style="display: flex !important; gap: 10px !important; align-items: center !important;">
                   <div class="selected-option" id="selectedCountry" style="display: flex !important; align-items: center !important; gap: 5px !important; padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; cursor: pointer !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
                       <img width="20" src="https://flagcdn.com/in.svg" id="selectedFlag" style="margin-right: 10px !important;">
-                      <span id="selectedCode" style="font-size: 14px !important;">+91</span>
+                      <span id="selectedCode" style="font-size: 14px !important; color: black !important">+91</span>
                   </div>
                   <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex: 1 !important; padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; font-size: 14px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
                   <div class="dropdown-options" id="countryDropdown" style="position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: white !important; border: 1px solid #ddd !important; border-radius: 8px !important; margin-top: 5px !important; max-height: 150px !important; overflow-y: auto !important; display: none; z-index: 100 !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;">
