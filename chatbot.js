@@ -31,79 +31,79 @@
         font-size: 13px;
     }
 
-    #userDetailsForm{
-      padding:0;
-        text-align: start;
-        width:100%
+   .setup-container #userDetailsForm{
+      padding:0 !important;
+        text-align: start !important;
+        width:100% !important;
   }
-        .switch-container {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      justify-content: center;
-      width: 90px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      padding: 5px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      position: relative;
+     .chatbot-header .switch-container {
+      display: flex   !important;
+      gap: 4px    !important;
+      align-items: center  !important;
+      justify-content: center !important;
+      width: 90px !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border-radius: 50px !important;
+      padding: 5px  !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+      position: relative !important;
   }
 
-  .switch-button {
+  .chatbot-header .switch-button {
       flex: 1;
       
-      border: none;
-      background: transparent;
-      color: var(--text-color);
-      border-radius: 30px;
-      font-size: 14px;
-      padding-top:3px;
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      z-index: 2;
-      transition: color 0.3s ease-in-out;
+      border: none !important;
+      background: transparent !important;
+      color: var(--text-color) !important;
+      border-radius: 30px !important;
+      font-size: 14px !important;
+      padding-top:3px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      position: relative  !important;
+      z-index: 2 !important;
+      transition: color 0.3s ease-in-out !important;
   }
 
-  .switch-button.active {
-      color: black;
+ .chatbot-header  .switch-button.active {
+      color: black  !important;
   }
 
-  .switch-slider {
-      position: absolute;
+  .chatbot-header .switch-slider {
+      position: absolute !important;
       
-      height: 90%;
+      height: 90% !important;
       
-      border-radius: 50px;
-      transition: transform 0.3s ease-in-out;
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-      z-index: 1;
+      border-radius: 50px !important;
+      transition: transform 0.3s ease-in-out !important;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2) !important;
+      z-index: 1 !important;
   }
 
 
-    .chat-header {
-        background: var(--primary-color);
-        color: white;
-        padding: 13px 0px;
+    .chat-container .chat-header {
+        background: var(--primary-color) !important;
+        color: white  !important;
+        padding: 13px 0px  !important;
        
-      height: 35px;
-        padding-left:10px;
-        padding-top:17px;
-        font-weight: 600;
-        display: flex;
-        font-size: 15px;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      height: 35px !important;
+        padding-left:10px  !important;
+        padding-top:17px  !important;
+        font-weight: 600  !important;
+        display: flex  !important;
+        font-size: 15px  !important;
+        justify-content: space-between  !important;
+        align-items: center !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1)  !important;
     }
 
-    .chat-header-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .chat-container  .chat-header-title {
+        display: flex  !important;
+        align-items: center  !important;
+        gap: 10px  !important;
     }
 
-    .chat-messages {
+    .chat-container .chat-messages {
         flex: 1;
         overflow-y: auto;
         padding: 10px 12px;
@@ -251,15 +251,15 @@
 
  
 
-    .chat-header-title svg {
-        width: 24px;
-        height: 24px;
+    .chat-container  .chat-header-title svg {
+        width: 24px  !important;
+        height: 24px  !important;
     }
 
-    .chat-header-status {
-        font-size: 13px;
-        opacity: 0.9;
-        font-weight: normal;
+    .chat-container  .chat-header-status {
+        font-size: 13px  !important;
+        opacity: 0.9  !important;
+        font-weight: normal  !important;
     }
 
    
@@ -564,93 +564,93 @@
         background: var(--primary-light);
     }
   .chatbot-header{
-  display:flex;
-  align-items:center;
+  display:flex  !important;
+  align-items:center  !important;
   }
   `;
   document.head.appendChild(style);
   const countryCodesStyle = `
-  .country-select-container {
-      display: flex;
-      gap: 10px;
-      align-items: center;
+ .setup-container .country-select-container {
+      display: flex !important;
+      gap: 10px !important;
+      align-items: center !important;
       
       }
       .country-select-container:focus {
           
-          border-color:var(--primary-color);
-          box-shadow:0 0 0 3px var(--primary-light);
+          border-color:var(--primary-color) !important;
+          box-shadow:0 0 0 3px var(--primary-light) !important;
       
       }
           
 
-  .phonee{
+  .setup-container .phonee{
   border:none !important;
   focus:none !important;
   outline:none !important;
   box-shadow:none !important;
 
   }
-  .country-code-select {
-      width: 60px;
-      margin-top:0px;
-      margin-bottom:0px;
-       border: 1px solid #E5E7EB;
+  .setup-container .country-code-select {
+      width: 60px !important;
+      margin-top:0px !important;
+      margin-bottom:0px !important;
+       border: 1px solid #E5E7EB !important;
       
-       font-size: 13px;
-       background: white;
+       font-size: 13px !important;
+       background: white !important;
        }
        .custom-dropdown {
-          border-radius: 50px;
-      position: relative;
+          border-radius: 50px !important;
+      position: relative !important;
+      width: 100% !important;
+  }
+
+  .setup-container .selected-option {
+      display: flex !important;
+      align-items: center !important;
+      padding: 12px !important;
+      border-radius: 5px !important;
+      border:1px solid #E5E7EB !important; 
+      cursor: pointer !important;
+  }
+
+  .setup-container .selected-option img {
+      width: 20px !important;
+      height: 15px !important;
+      margin-right: 10px !important;
+  }
+
+  .setup-container .dropdown-options {
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
       width: 100%;
+      background: white !important;
+      border: 1px solid #E5E7EB !important;
+      border-radius: 5px !important;
+      margin-top: 5px !important;
+      max-height: 150px !important;
+      overflow-y: auto !important;
+      display: none !important;
+      z-index: 100 !important; 
   }
 
-  .selected-option {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      border-radius: 5px;
-      border:1px solid #E5E7EB; 
-      cursor: pointer;
+  .setup-container .dropdown-options div {
+      display: flex !important;
+      align-items: center !important;
+      padding: 8px !important;
+      cursor: pointer !important;
   }
 
-  .selected-option img {
-      width: 20px;
-      height: 15px;
-      margin-right: 10px;
+  .setup-container .dropdown-options div:hover {
+      background: #f0f0f0 !important;
   }
 
-  .dropdown-options {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: white;
-      border: 1px solid #E5E7EB;
-      border-radius: 5px;
-      margin-top: 5px;
-      max-height: 150px;
-      overflow-y: auto;
-      display: none;
-      z-index: 100;
-  }
-
-  .dropdown-options div {
-      display: flex;
-      align-items: center;
-      padding: 8px;
-      cursor: pointer;
-  }
-
-  .dropdown-options div:hover {
-      background: #f0f0f0;
-  }
-
-  .dropdown-options img {
-      width: 20px;
-      height: 15px;
-      margin-right: 10px;
+  .setup-container .dropdown-options img {
+      width: 20px !important;
+      height: 15px !important;
+      margin-right: 10px !important;
   }
       @keyframes rippleEffect {
       0% {
@@ -684,22 +684,22 @@
       }
   }
 
-  .agent-photo-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .call-screen .agent-photo-container {
+      position: relative !important;
+      width: 150px !important;
+      height: 150px   !important;
+      margin-bottom: 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
   }
 
-  .agent-photo {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  .call-screen  .agent-photo {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2) !important;
   }
 
   .ray-animation {
@@ -1526,43 +1526,37 @@
 
     showUserForm() {
       // Generate country code options
-      const countryCodeOptions = countryCodes
-        .map(
-          (cc) =>
-            `<option value="${cc.code}">${cc.code} ${cc.country_name}</option>`
-        )
-        .join("");
 
       const formHtml = `
-                          <div class="setup-container" style="background: linear-gradient(135deg, #f5f7fa, #c3cfe2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
-                              <form id="userDetailsForm" style="width: 100%; max-width: 400px; margin: auto;">
-                                  <div class="form-group" style="margin-bottom: 15px;">
-                                      <label class="form-label" style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #333;">Your name <span style="color: red;">*</span></label>
-                                      <input type="text" class="form-input" name="name" placeholder="Enter your name" required style=" padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                  </div>
-                                  <div class="form-group" style="margin-bottom: 15px;">
-                                      <label class="form-label" style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #333;">Email address <span style="color: red;">*</span></label>
-                                      <input type="email" class="form-input" name="email" placeholder="Enter your email" required style=" padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                  </div>
-                                  <div class="form-group" style="margin-bottom: 15px;">
-                                      <label class="form-label" style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #333;">Phone number</label>
-                                      <div class="country-select-container" style="display: flex; gap: 10px; align-items: center;">
-                                          <div class="selected-option" id="selectedCountry" style="display: flex; align-items: center; gap: 5px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                              <img width="20" src="https://flagcdn.com/in.svg" id="selectedFlag" style="margin-right: 10px;">
-                                              <span id="selectedCode" style="font-size: 14px;">+91</span>
-                                          </div>
-                                          <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                          <div class="dropdown-options" id="countryDropdown" style="position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; max-height: 150px; overflow-y: auto; display: none; z-index: 100; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-                                              <!-- Options will be inserted here dynamically -->
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="btn-container" style="display: flex; justify-content: center; align-items: center; text-align: center;">
-                                      <button type="submit" class="setup-button" style="background: linear-gradient(135deg, #667eea, #33389d); color: white; border: none; font-size: 16px; padding: 14px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Start Chat</button>
-                                  </div>
-                              </form>
-                          </div>
-                      `;
+              <div class="setup-container" style="background: linear-gradient(135deg, #f5f7fa, #c3cfe2) !important; border-radius: 20px !important; padding: 30px !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;">
+              <form id="userDetailsForm" style="width: 100% !important; max-width: 400px !important; margin: auto !important;">
+                  <div class="form-group" style="margin-bottom: 15px !important;">
+                  <label class="form-label" style="display: block !important; margin-bottom: 8px !important; font-size: 14px !important; font-weight: 600 !important; color: #333 !important;">Your name <span style="color: red !important;">*</span></label>
+                  <input type="text" class="form-input" name="name" placeholder="Enter your name" required style="padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; font-size: 14px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
+                  </div>
+                  <div class="form-group" style="margin-bottom: 15px !important;">
+                  <label class="form-label" style="display: block !important; margin-bottom: 8px !important; font-size: 14px !important; font-weight: 600 !important; color: #333 !important;">Email address <span style="color: red !important;">*</span></label>
+                  <input type="email" class="form-input" name="email" placeholder="Enter your email" required style="padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; font-size: 14px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
+                  </div>
+                  <div class="form-group" style="margin-bottom: 15px !important;">
+                  <label class="form-label" style="display: block !important; margin-bottom: 8px !important; font-size: 14px !important; font-weight: 600 !important; color: #333 !important;">Phone number</label>
+                  <div class="country-select-container" style="display: flex !important; gap: 10px !important; align-items: center !important;">
+                  <div class="selected-option" id="selectedCountry" style="display: flex !important; align-items: center !important; gap: 5px !important; padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; cursor: pointer !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
+                      <img width="20" src="https://flagcdn.com/in.svg" id="selectedFlag" style="margin-right: 10px !important;">
+                      <span id="selectedCode" style="font-size: 14px !important;">+91</span>
+                  </div>
+                  <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex: 1 !important; padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; font-size: 14px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
+                  <div class="dropdown-options" id="countryDropdown" style="position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: white !important; border: 1px solid #ddd !important; border-radius: 8px !important; margin-top: 5px !important; max-height: 150px !important; overflow-y: auto !important; display: none !important; z-index: 100 !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;">
+                      <!-- Options will be inserted here dynamically -->
+                  </div>
+                  </div>
+                  </div>
+                  <div class="btn-container" style="display: flex !important; justify-content: center !important; align-items: center !important; text-align: center !important;">
+                  <button type="submit" class="setup-button" style="background: linear-gradient(135deg, #667eea, #33389d) !important; color: white !important; border: none !important; font-size: 16px !important; padding: 14px 20px !important; border-radius: 8px !important; cursor: pointer !important; font-weight: 600 !important; transition: all 0.2s !important;">Start Chat</button>
+                  </div>
+              </form>
+              </div>
+              `;
 
       const chatMessages = document.getElementById("chatMessages");
       if (chatMessages) {
