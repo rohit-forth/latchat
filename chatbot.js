@@ -188,7 +188,7 @@
     }
     .country-select-container {
         position: relative;
-        border: 1px solid #E5E7EB;
+        
         border-radius: 8px;
     }
   
@@ -612,6 +612,7 @@
       align-items: center !important;
       padding: 12px !important;
       border-radius: 5px !important;
+      background: white !important;
       border:1px solid #E5E7EB !important; 
       cursor: pointer !important;
   }
