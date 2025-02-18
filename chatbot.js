@@ -18,8 +18,9 @@
         position: fixed;
         bottom: 24px;
         right: 24px;
-        width: 395px;
-        height: 590px;
+        width: 440px;
+        height: 610px;
+        
          
         z-index: 1000;
         border-radius: var(--border-radius);
@@ -27,7 +28,7 @@
         display: none;
         flex-direction: column;
         overflow: hidden;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: inherit;
         font-size: 13px;
     }
 
@@ -36,25 +37,25 @@
         text-align: start !important;
         width:100% !important;
   }
-     .chatbot-header .switch-container {
-      display: flex   !important;
+     .chat-header .switch-container {
+      display: flex  ;
       gap: 4px    !important;
       align-items: center  !important;
       justify-content: center !important;
       width: 90px !important;
-      background: rgba(255, 255, 255, 0.1) !important;
+      background: rgba(255, 255, 255, 0.1) ;
       border-radius: 50px !important;
       padding: 5px  !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) ;
       position: relative !important;
   }
 
-  .chatbot-header .switch-button {
+  .chat-header .switch-button {
       flex: 1;
       
       border: none !important;
-      background: transparent !important;
-      color: var(--text-color) !important;
+      background: transparent ;
+      color: var(--text-color) ;
       border-radius: 30px !important;
       font-size: 14px !important;
       padding-top:3px !important;
@@ -65,11 +66,11 @@
       transition: color 0.3s ease-in-out !important;
   }
 
- .chatbot-header  .switch-button.active {
+ .chat-header  .switch-button.active {
       color: black  !important;
   }
 
-  .chatbot-header .switch-slider {
+  .chat-header .switch-slider {
       position: absolute !important;
       
       height: 90% !important;
@@ -86,7 +87,7 @@
         color: white  !important;
         padding: 13px 0px  !important;
        
-      height: 35px !important;
+      height: auto !important;
         padding-left:10px  !important;
         padding-top:17px  !important;
         font-weight: 600  !important;
@@ -626,13 +627,14 @@
       top: 100% !important;
       left: 0 !important;
       width: 100%;
+      color:black !important;
       background: white !important;
       border: 1px solid #E5E7EB !important;
       border-radius: 5px !important;
       margin-top: 5px !important;
       max-height: 150px !important;
       overflow-y: auto !important;
-      display: none !important;
+      ;
       z-index: 100 !important; 
   }
 
@@ -1546,7 +1548,7 @@
                       <span id="selectedCode" style="font-size: 14px !important;">+91</span>
                   </div>
                   <input type="tel" class="phonee form-input" name="phone" placeholder="Enter your phone number" style="flex: 1 !important; padding: 12px !important; border: 1px solid #ddd !important; border-radius: 8px !important; font-size: 14px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;">
-                  <div class="dropdown-options" id="countryDropdown" style="position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: white !important; border: 1px solid #ddd !important; border-radius: 8px !important; margin-top: 5px !important; max-height: 150px !important; overflow-y: auto !important; display: none !important; z-index: 100 !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;">
+                  <div class="dropdown-options" id="countryDropdown" style="position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; background: white !important; border: 1px solid #ddd !important; border-radius: 8px !important; margin-top: 5px !important; max-height: 150px !important; overflow-y: auto !important; display: none; z-index: 100 !important; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;">
                       <!-- Options will be inserted here dynamically -->
                   </div>
                   </div>
