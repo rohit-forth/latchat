@@ -1809,6 +1809,7 @@
     showConversationEndPrompt() {
       const promptId = "conversation-end-prompt-" + Date.now();
       const promptDiv = document.createElement("div");
+      this.disableInput();
       promptDiv.id = promptId;
       promptDiv.className = "conversation-end";
       promptDiv.innerHTML = `
@@ -1835,6 +1836,7 @@
           if (action === "continue") {
             // Replace prompt with continuation message
             const continuationMessage = document.createElement("div");
+            this.enableInput();
             // continuationMessage.className = 'message bot-message';
             // continuationMessage.style.textAlign = 'center';
             // continuationMessage.innerHTML = 'Great! How else can I help you today?';
@@ -1874,6 +1876,7 @@
         }
 
         this.messageHistory = [];
+        this.disableInput();
         this.chatId = null;
         this.initialized = false; // Reset initialization status
         this.isChatEnding = false;
