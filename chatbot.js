@@ -999,7 +999,7 @@
 
   async function endCall() {
     try {
-      await fetch(`https://dev.qixs.ai:3003/chat/${callId}`, {
+      await fetch(`https://qixs.ai:3001/chat/${callId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -1240,7 +1240,7 @@
     };
 
     try {
-      await fetch(`https://dev.qixs.ai:3003/chat/${callId}/user-detail`, {
+      await fetch(`https://qixs.ai:3001/chat/${callId}/user-detail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -1270,7 +1270,7 @@
       }
 
       const apiResponse = await fetch(
-        "https://dev.qixs.ai:3003/knowledge-base/landing/page/ai",
+        "https://qixs.ai:3001/knowledge-base/landing/page/ai",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1421,12 +1421,9 @@
     const data = JSON.parse(decoded);
     const getAgentandScriptDetails = async (agentId) => {
       try {
-        const apiRes = await fetch(
-          `https://dev.qixs.ai:3003/agent/${agentId}`,
-          {
-            method: "GET",
-          }
-        );
+        const apiRes = await fetch(`https://qixs.ai:3001/agent/${agentId}`, {
+          method: "GET",
+        });
         const response = await apiRes.json();
 
         //insert image of agent inside chattrigger div
@@ -1493,7 +1490,7 @@
     constructor() {
       this.secret_key = localStorage.getItem("secret_key");
       this.agent_id = localStorage.getItem("ai_agent");
-      this.apiEndpoint = "https://dev.qixs.ai:3003/";
+      this.apiEndpoint = "https://qixs.ai:3001/";
       this.initialized = false;
       this.messageHistory = [];
       this.chatId = null;
