@@ -1601,7 +1601,7 @@
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
           const switchContainer = document.querySelector(".switch-container");
-          switchContainer.style.display = "flex";
+          // switchContainer.style.display = "flex";
           const formData = new FormData(form);
           const details = Object.fromEntries(formData.entries());
 
@@ -1724,7 +1724,11 @@
 
       if (!isUser) {
         const botImage = document.createElement("img");
-        botImage.src = `https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${this.agent_photo}`; // Replace with the actual path to the bot image
+        botImage.src = localStorage.getItem("agent_image")
+          ? `https://demoserver3.sgp1.digitaloceanspaces.com/uploads/images/original/${localStorage.getItem(
+              "agent_image"
+            )}`
+          : "https://img.freepik.com/premium-vector/vector-flat-illustration-round-gray-man-icon-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9_719432-1794.jpg?w=740"; // Replace with the actual path to the bot image
         botImage.alt = "Bot";
         botImage.style.width = "26px";
         botImage.style.objectFit = "cover";
